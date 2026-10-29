@@ -1,0 +1,101 @@
+/*
+This is the stylesheet for the site's home page and its associated components.
+Author: Zenzicubic
+License: MIT
+*/
+
+:root {
+    --home-canvas-height: 20vh;
+    
+    --home-section-ln-height: 2.1;
+    --home-section-arrow-sz: 1.8em;
+    --home-page-section-padding: 2em 1.5em;
+
+    --home-page-img-padding: 2em;
+    --home-page-img-sz-lg: 30vw;
+    --home-page-img-sz-sm: min(100%, 40vh);
+}
+
+/* Header and description */
+
+#home-page-top-section {
+    text-align: center;
+}
+
+#home-top-description {
+    padding: var(--small-spacing);
+}
+
+#home-top-canvas {
+    touch-action: pan-y;
+
+    width: 100%;
+    height: var(--home-canvas-height);
+}
+
+/* Sections */
+
+#home-page-sections-wrapper {
+    display: grid;
+
+    grid-auto-rows: 1fr;
+    border-top: var(--border);
+}
+
+.home-page-section {
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    column-gap: var(--home-page-img-padding);
+    background-color: var(--dark-col-1);
+    padding: var(--home-page-section-padding);
+}
+
+.home-page-section-img {
+    border: var(--border);
+    width: var(--home-page-img-sz-lg);
+    border-radius: var(--border-radius);
+}
+
+.home-page-section:nth-child(odd) {
+    flex-direction: row-reverse;
+    background-color: var(--dark-col-2);
+}
+
+.home-page-section:not(:last-child)::before {
+    position: absolute;
+    background-color: inherit; 
+
+    left: 50%;
+    z-index: 1;
+    content: "";
+    transform: rotate(45deg);
+    width: var(--home-section-arrow-sz);
+    height: var(--home-section-arrow-sz);
+    top: calc(100% - 0.5 * var(--home-section-arrow-sz));
+}
+
+.section-text {
+    text-align: center;
+
+    line-height: var(--home-section-ln-height);
+}
+
+.section-text-desc {
+    margin: 0;
+}
+
+/* Styling for smaller screens */
+@media (max-width: 767px) {
+    .home-page-section {
+        flex-direction: column !important;
+
+        column-gap: 0;
+        row-gap: var(--home-page-img-padding);
+    }
+
+    .home-page-section-img {
+        width: var(--home-page-img-sz-sm);
+    }
+}

@@ -1,0 +1,89 @@
+/*
+This is the basic stylesheet which every page inherits (not including styles for specific components).
+It also lists basic design colors and properties used by multiple components.
+Author: Zenzicubic
+License: MIT
+*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons');
+
+
+/*
+Color theme.
+*/
+
+:root {
+    --dark-col-1: #121212;
+    --dark-col-2: #282828;
+    --dark-col-3: #3f3f3f;
+    --dark-col-4: #575757;
+
+    --elt-col-1: #3b429f;
+    --elt-col-2: #6b68b5;
+    --elt-col-3: #9691ca;
+    --elt-col-4: #ada8d6;
+
+    --light-col-1: #fff;
+    --light-col-2: #dedede;
+    --light-col-3: #c2c2c2;
+}
+
+/*
+Constants.
+*/
+
+:root {
+    /* General */
+    --small-spacing: 0.4em;
+    --border-radius: 0.2em;
+    --transition-duration-fast: 0.3s;
+    --transition-duration-slow: 0.5s;
+    --blur-filter: blur(1.5px);
+    --bg-filter: var(--blur-filter) brightness(0.3);
+
+    /* Border */
+    --border-width: 0.05em;
+    --border: var(--border-width) solid var(--light-col-1);
+
+    /* Text */
+    --large-font-size: 1.25em;
+    --font-family: 'Open Sans', Arial, sans-serif;
+}
+
+/* 
+Styles for basic elements.
+*/
+
+body {
+    overflow: hidden;
+
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--dark-col-1);
+    scrollbar-color: var(--elt-col-1) var(--light-col-1);
+}
+
+p, h1, h2, h3, h4, h5, li, span, noscript, label {
+    color: var(--light-col-1);
+}
+
+a {
+    color: var(--elt-col-3);
+    transition: color var(--transition-duration-fast);
+}
+
+a:hover { 
+    color: var(--elt-col-4); 
+}
+
+hr {
+    width: 100%;
+    border: var(--border);
+    margin-top: var(--small-spacing);
+    margin-bottom: var(--small-spacing);
+}
+
+.material-icons {
+    user-select: none;
+	vertical-align: middle;
+}

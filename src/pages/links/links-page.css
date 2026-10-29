@@ -1,0 +1,33 @@
+/*
+This is the stylesheet for the page with links to my various other sites.
+Author: Zenzicubic
+License: MIT
+*/
+
+:root {
+    --page-link-padding: 0.8em;
+}
+
+#links-container {
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--small-spacing);
+    row-gap: var(--small-spacing);
+}
+
+.page-link {
+    text-align: center;
+    text-decoration: none;
+
+    border: var(--border);
+    padding: var(--page-link-padding);
+    border-radius: var(--border-radius);
+    background-color: var(--dark-col-2);
+    color: var(--light-col-1) !important;
+    transition: background-color var(--transition-duration-fast);
+}
+
+.page-link:hover {
+    background-color: var(--elt-col-2);
+}

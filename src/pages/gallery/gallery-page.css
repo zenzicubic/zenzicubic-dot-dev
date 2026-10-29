@@ -1,0 +1,119 @@
+/*
+This is the stylesheet for the image gallery page.
+Author: Zenzicubic
+License: MIT
+*/
+
+:root {
+    --gallery-column-width: 15em;
+    --gallery-date-font-sz: 0.8em;
+
+    --gallery-image-max-width: 90vw;
+    --gallery-image-max-height: 80dvh;
+}
+
+/* Gallery grid display */
+
+#gallery-wrapper {
+    display: grid;
+
+    padding: var(--small-spacing);
+    grid-gap: var(--small-spacing);
+    grid-template-columns: repeat(auto-fit, minmax(var(--gallery-column-width), 1fr));
+}
+
+.gallery-section-header {
+    text-align: center;
+
+    grid-column: -1 / 1;
+}
+
+.gallery-image-display {
+    text-align: center;
+
+    border: var(--border);
+    padding: var(--small-spacing);
+    border-radius: var(--border-radius);
+    background-color: var(--dark-col-2);
+}
+
+.gallery-image-date {
+    font-weight: bold;
+
+    font-size: var(--gallery-date-font-sz);
+}
+
+.gallery-thumbnail-wrapper {
+    border: none;
+    overflow: hidden;
+
+    padding: 0px;
+    border-radius: var(--border-radius);
+}
+
+.gallery-thumbnail {
+    display: block;
+
+    max-width: 100%;
+}
+
+/* Gallery image display */
+
+#image-display-wrapper {
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    z-index: 200;
+    width: 100vw;
+    height: 100dvh;
+    backdrop-filter: var(--blur-filter);
+    transition: opacity var(--transition-duration-slow),
+                visibility var(--transition-duration-slow);
+}
+
+#image-display-wrapper.visible {
+    visibility: visible;
+
+    opacity: 1;
+}
+
+#image-display {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+
+    border: var(--border);
+    transform: scaleY(0%);
+    border-radius: var(--border-radius);
+    transition: transform var(--transition-duration-slow) ease;
+}
+
+#image-display-wrapper.visible #image-display {
+    transform: scaleY(100%);
+}
+
+#display-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: var(--border);
+    padding: var(--small-spacing);
+    background-color: var(--dark-col-3);
+}
+
+#display-title {
+    margin: 0;
+}
+
+#display-img {
+    flex-grow: 1;
+    max-width: var(--gallery-image-max-width);
+    max-height: var(--gallery-image-max-height);
+}

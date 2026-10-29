@@ -1,0 +1,198 @@
+/*
+This is the stylesheet for the components of the basic layout used by every page on the site.
+Author: Zenzicubic
+License: MIT
+*/
+
+:root {
+    --topbar-logo-sz: 2.6em;
+    --topbar-title-sz: 1.2em;
+    --topbar-link-padding: 1em;
+    --topbar-links-tran: translateZ(-10px);    
+    
+    --banner-margin: 15vw;
+    --banner-height-sm: 35vh;
+    --banner-height-lg: 50vh;
+}
+
+/* Link to skip to main content */
+
+.page-skip-link {
+    display: block;
+    position: absolute;
+    
+    top: 0px;
+    left: 0px;
+    border: var(--border);
+    transform: translateX(-110%);
+    padding: var(--small-spacing);
+    background-color: var(--dark-col-3);
+}
+
+.page-skip-link:focus {
+    transform: translateX(0%);
+}
+
+/* Page layout */
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.page-topbar { 
+    display: flex;
+
+    border-bottom: var(--border);
+    background-color: var(--dark-col-3);
+}
+
+.topbar-component-wrapper {
+    display: flex;
+    padding: var(--small-spacing);
+}
+
+.topbar-logo-wrapper {
+    display: flex;
+    align-items: center;
+
+    column-gap: var(--small-spacing);
+}
+
+.topbar-logo {
+    width: var(--topbar-logo-sz);
+    height: var(--topbar-logo-sz);
+    border-radius: var(--border-radius);
+}
+
+.topbar-title {
+    margin: 0;
+    font-size: var(--topbar-title-sz);
+}
+
+.topbar-more-btn {
+    display: none;
+}
+
+.topbar-links {
+    display: flex;
+}
+
+.topbar-button-link {
+    text-align: center;
+    text-decoration: none;
+
+    flex-grow: 1;
+    color: var(--light-col-1) !important;
+    padding: var(--topbar-link-padding);
+    transition: background-color var(--transition-duration-fast);
+}
+
+.topbar-button-link:not(.current-page):hover {
+    background-color: var(--elt-col-2);
+}
+
+.topbar-button-link.current-page {
+    background-color: var(--elt-col-1);
+}
+
+#page-content {
+    display: flex;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-direction: column;
+
+    flex-grow: 1;
+}
+
+/* Banner layout */
+
+.banner-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    flex-shrink: 0;
+    background-position: 50%;
+    height: var(--banner-height-sm);
+}
+
+.banner-wrapper.fullscreen {
+    flex-grow: 1;
+}
+
+.banner {
+    text-align: center;
+
+    border: var(--border);
+    padding: var(--small-spacing);
+    backdrop-filter: var(--bg-filter);
+    margin-left: var(--banner-margin);
+    margin-right: var(--banner-margin);
+    border-radius: var(--border-radius);
+}
+
+/* Styling for smaller screens */
+
+@media (max-width: 767px) {
+    /* Topbar */
+
+    .page-topbar {
+        position: relative;
+        transform-style: preserve-3d;
+
+        z-index: 100;
+    }
+
+    .topbar-component-wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        flex-grow: 1;
+    }
+
+    .topbar-more-btn {
+        margin-top: auto;
+        margin-bottom: auto;
+        display: inline-block;
+        align-self: flex-start;
+    }
+
+    .topbar-links {
+        visibility: hidden;
+        position: absolute;
+        flex-direction: column;
+
+        width: 100%;
+        border-bottom: var(--border);
+        background-color: var(--dark-col-2);
+        transform: translateY(-100%) var(--topbar-links-tran);
+        transition: transform var(--transition-duration-slow) ease,
+                    visibility var(--transition-duration-slow);
+    }
+
+    .topbar-links.expanded {
+        visibility: visible;
+
+        transform: translateY(0%) var(--topbar-links-tran);
+    }
+
+    .topbar-links.pause-transitions {
+        transition: none;
+    }
+
+    .topbar-button-link {
+        text-align: center;
+    }
+
+    /* Banner */
+
+    .banner-wrapper {
+        height: var(--banner-height-lg);
+    }
+}
