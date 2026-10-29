@@ -3,13 +3,12 @@
  * @author Zenzicubic
  * @license MIT
  */
+
+// Constants
 const timeFactor = 3e-4;
+const scaleFac = 1.5;
 
-// Scaling/size
-const maxPixRatio = 2.4,
-      scaleFac = 1.5;
-
-// Curve drawing
+// Curve drawing constants
 const extent = 20,
       numCurveSegments = 250,
       invNumSegments = 1 / (numCurveSegments - 1);
@@ -44,9 +43,9 @@ export default class WitchApplet {
      * @param {Array.<ResizeObserverEntry>} entries Resize observer entries to process. 
      */
     onResize(entries) {
-        // Get width and height (take into account retina displays)
+        // Get width and height (take into account device pixel ratio)
         let bBox = entries[0].contentRect;
-        let ratio = Math.min(window.devicePixelRatio, maxPixRatio);
+        let ratio = window.devicePixelRatio;
         this.width = bBox.width * ratio;
         this.height = bBox.height * ratio;
 
