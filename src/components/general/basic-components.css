@@ -1,0 +1,51 @@
+/*
+This is the stylesheet for the basic components which are reused across the pages of the site.
+Author: Zenzicubic
+License: MIT
+*/
+
+/* Icon button constants */
+
+.icon-btn {
+    --btn-icon-size: 1.2em;
+    --icon-btn-padding: 0.5em;
+}
+
+/* Icon button rules */
+
+.icon-btn {
+    border: none;
+    text-decoration: none;
+
+    font-size: var(--btn-icon-size);
+    padding: var(--icon-btn-padding);
+    background-color: var(--elt-col-1);
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-duration);
+    
+    &:hover {
+        background-color: var(--elt-col-2);
+    }
+}
+
+/* Copyright footer constants */
+
+.copyright-footer {
+    --cc-icon-sz: 1.6em;
+}
+
+/* Copyright footer rules */
+
+.copyright-footer {
+    display: flex;
+    justify-content: center;
+
+    border-top: var(--border);
+}
+
+.copyright-footer-icon {
+    vertical-align: middle;
+
+    width: var(--cc-icon-sz);
+    height: var(--cc-icon-sz);
+}
