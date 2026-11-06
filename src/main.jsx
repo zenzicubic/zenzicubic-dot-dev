@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Routes, Route, BrowserRouter } from 'react-router';
 
@@ -20,11 +20,9 @@ import './index.css';
 createRoot(document.getElementById("root")).render(
 <BrowserRouter>
     <Routes>
-        <Suspense fallback={<p>Loading...</p>}>
-            <Route index element={<HomePage />} />
-            <Route path="/links" element={<LinksPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-        </Suspense>
+        <Route index element={<HomePage />} />
+        <Route path="/links" element={<LinksPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="*" element={<ErrorPage />} />
     </Routes>
 </BrowserRouter>);
